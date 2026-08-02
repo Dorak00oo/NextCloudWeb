@@ -188,3 +188,7 @@ core/js/mimetypelist.js
 
 # Private Drive / local-only (APK lives in a separate repo)
 /mobile-apk/
+
+# local secrets
+.env
+.devcontainer/.env
