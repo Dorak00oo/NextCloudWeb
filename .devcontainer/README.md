@@ -14,17 +14,18 @@ That's already it. Everything else will be configured automatically by the Conta
 
 ## Credentials
 
-On first start the container installs Nextcloud using environment variables (no default passwords are committed):
+On first start the Container installs and configures Nextcloud with the following credentials:
 
-| Variable | Purpose | Fallback if unset |
-|----------|---------|-------------------|
-| `NEXTCLOUD_ADMIN_USER` | Admin username | `admin` |
-| `NEXTCLOUD_ADMIN_PASSWORD` | Admin password | **required** (setup fails if empty) |
-| `POSTGRES_USER` | Database user | `postgres` |
-| `POSTGRES_PASSWORD` | Database password | **required** (compose fails if empty) |
-| `POSTGRES_DB` | Database name | `postgres` |
+**Nextcloud Admin Login**
 
-Set these in your local environment or a gitignored `.env` next to `docker-compose.yml` before starting the container.
+Username: `admin` <br>
+Password: `admin`
+
+**Postgres credentials**
+
+Username: `postgres` <br>
+Password: `postgres` <br>
+Database: `postgres`
 
 ## Services
 
@@ -34,7 +35,7 @@ The following services will be started:
 |---------|------------|-------------|
 | Nextcloud (served via Apache) | `80` | The main application |
 | Mailhog | `8025` | SMTP email delivery for testing |
-| Adminer | `8080` | Database viewer. Use your Postgres credentials and connect to `localhost` |
+| Adminer | `8080` | Database viewer. Use credentials from above and connect to `localhost` to get access to the NC database | 
 
 ## Permissions
 

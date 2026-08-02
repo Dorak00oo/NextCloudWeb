@@ -174,8 +174,8 @@ $CONFIG = [
 	 * Specify read-only replicas to be used by Nextcloud when querying the database
 	 */
 	'dbreplica' => [
-		['user' => 'nextcloud', 'password' => 'replace-with-replica-password', 'host' => 'replica1', 'dbname' => ''],
-		['user' => 'nextcloud', 'password' => 'replace-with-replica-password', 'host' => 'replica2', 'dbname' => ''],
+		['user' => 'nextcloud', 'password' => 'password1', 'host' => 'replica1', 'dbname' => ''],
+		['user' => 'nextcloud', 'password' => 'password2', 'host' => 'replica2', 'dbname' => ''],
 	],
 
 	/**
@@ -1199,12 +1199,12 @@ $CONFIG = [
 	 * Defaults to an empty array.
 	 */
 	'log.condition' => [
-		'shared_secret' => 'replace-with-your-shared-secret',
+		'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
 		'users' => ['sample-user'],
 		'apps' => ['files'],
 		'matches' => [
 			[
-				'shared_secret' => 'replace-with-your-shared-secret',
+				'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
 				'users' => ['sample-user'],
 				'apps' => ['files'],
 				'loglevel' => 1,
@@ -2039,7 +2039,7 @@ $CONFIG = [
 			'username' => 'facebook100000123456789',
 			// in the trystack dashboard, go to user -> settings -> API Password to
 			// generate a password
-			'password' => 'replace-with-your-password',
+			'password' => 'Secr3tPaSSWoRdt7',
 			// must already exist in the objectstore, name can be different
 			'container' => 'nextcloud',
 			// prefix to prepend to the fileid, default is 'oid:urn:'
