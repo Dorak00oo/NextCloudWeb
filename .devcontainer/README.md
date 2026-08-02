@@ -1,0 +1,75 @@
+<!--
+  - SPDX-FileCopyrightText: 2023 Nextcloud GmbH and Nextcloud contributors
+  - SPDX-License-Identifier: AGPL-3.0-or-later
+-->
+# Nextcloud DevContainer
+
+## Usage
+
+Make sure you have the [VSCode DevContainer](https://code.visualstudio.com/docs/devcontainers/containers) extensions installed. If you open the project, VSCode will ask you if you want to open it inside of the DevContainer. If that's not the case, use <kbd>F1</kbd>&rarr;*Dev Containers: Open Folder in Container*.
+
+Alternatively open the project directly in [GitHub Codespaces](https://github.com/codespaces/new?hide_repo_select=true&ref=master&repo=60243197&skip_quickstart=true).
+
+That's already it. Everything else will be configured automatically by the Containers startup routine.
+
+## Credentials
+
+On first start the container installs Nextcloud using environment variables (no default passwords are committed):
+
+| Variable | Purpose | Fallback if unset |
+|----------|---------|-------------------|
+| `NEXTCLOUD_ADMIN_USER` | Admin username | `admin` |
+| `NEXTCLOUD_ADMIN_PASSWORD` | Admin password | **required** (setup fails if empty) |
+| `POSTGRES_USER` | Database user | `postgres` |
+| `POSTGRES_PASSWORD` | Database password | **required** (compose fails if empty) |
+| `POSTGRES_DB` | Database name | `postgres` |
+
+Set these in your local environment or a gitignored `.env` next to `docker-compose.yml` before starting the container.
+
+## Services
+
+The following services will be started:
+
+| Service | Local port | Description |
+|---------|------------|-------------|
+| Nextcloud (served via Apache) | `80` | The main application |
+| Mailhog | `8025` | SMTP email delivery for testing |
+| Adminer | `8080` | Database viewer. Use your Postgres credentials and connect to `localhost` |
+
+## Permissions
+
+The container runs with the user `devcontainer` who is also running the Apache2 process. All mounted source files have
+proper permissions so that this user can access everything which is inside the current workspace. If you need to
+get root permissions for whatever reason, use `sudo su` or `sudo <command>` (for example `sudo service apache2 restart`).
+Everything else (like building the application, adjusting files, ...) should be done as `devcontainer` user.
+
+## NodeJs and NVM
+
+The container comes with [`nvm`](https://github.com/nvm-sh/nvm) and Node 16 installed. This should be sufficient to
+build Nextcloud Core sources via `make`. If you need a different Node Version (for example for
+app development), you can easily switch between different versions by running:
+
+```bash
+# Install and use Node 14
+nvm install 14
+nvm use 14
+
+# Check version 
+node -v
+
+# Switch back to Node 16
+nvm use 16
+
+# Check version
+node -v
+```
+
+Note that `nvm` is only installed for the user `devcontainer` and won't work out of the box for
+any other user.
+
+## Debugging
+
+The Apache webserver is already configured to automatically try to connect to a debugger process
+listening on port `9003`. To start the VSCode debugger process, use the delivered debug profile `Listen for XDebug`.
+After you started the VSCode debugger, just navigate to the appropriate Nextcloud URL to get your
+debug hits. 

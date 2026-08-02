@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+  - SPDX-FileCopyrightText: 2026 Dorak00oo and contributors
+  - SPDX-License-Identifier: AGPL-3.0-or-later
+-->
+<info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
+	  xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+	<id>gallery</id>
+	<name>Gallery</name>
+	<summary>Samsung-style media albums</summary>
+	<description><![CDATA[Browse photos and videos in albums derived from your folders. Organization syncs via /.gallery/albums-meta.json for the mobile app.]]></description>
+	<version>1.0.2</version>
+	<licence>agpl</licence>
+	<author>Dorak00oo</author>
+	<namespace>Gallery</namespace>
+	<category>multimedia</category>
+	<bugs>https://github.com/Dorak00oo</bugs>
+	<dependencies>
+		<nextcloud min-version="35" max-version="35"/>
+	</dependencies>
+	<navigations>
+		<navigation>
+			<name>Gallery</name>
+			<route>gallery.page.index</route>
+			<icon>app.svg</icon>
+			<order>2</order>
+		</navigation>
+	</navigations>
+</info>
