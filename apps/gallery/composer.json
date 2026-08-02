@@ -1,0 +1,27 @@
+{
+	"name": "nextcloud/gallery",
+	"description": "Private drive gallery albums",
+	"license": "AGPL-3.0-or-later",
+	"config": {
+		"vendor-dir": "composer",
+		"optimize-autoloader": true,
+		"classmap-authoritative": true,
+		"autoloader-suffix": "Gallery",
+		"platform": {
+			"php": "8.2"
+		}
+	},
+	"autoload": {
+		"psr-4": {
+			"OCA\\Gallery\\": "lib/"
+		}
+	},
+	"scripts": {
+		"post-install-cmd": [
+			"@composer dump-autoload"
+		],
+		"post-update-cmd": [
+			"@composer dump-autoload"
+		]
+	}
+}
